@@ -21,5 +21,15 @@ class Utils {
 
             return square
         }
+
+        fun generateSquareBackground(@ColorInt backgroundColor: Int): GradientDrawable {
+
+            var square = GradientDrawable()
+            square.shape = GradientDrawable.RECTANGLE
+            square.cornerRadii = floatArrayOf( 8f, 8f, 8f, 8f, 0f, 0f, 0f, 0f )
+            square.setColor(backgroundColor)
+
+            return square
+        }
     }
 }
