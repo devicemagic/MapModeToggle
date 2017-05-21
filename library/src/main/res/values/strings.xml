@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Map Mode Toggle Library</string>
-    <string name="satellite">Satellite</string>
-    <string name="map">Map</string>
+    <string name="satellite">SATELLITE</string>
+    <string name="map">MAP</string>
 </resources>

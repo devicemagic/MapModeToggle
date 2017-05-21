@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:weightSum="2"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:id="@+id/main"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="2">
+
     <RelativeLayout
-        android:layout_weight="1"
         android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
         <TextView
-            android:text="@string/map"
-            android:layout_centerInParent="true"
+            android:id="@+id/map_text"
+            android:textColor="@android:color/white"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/map" />
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_weight="1"
         android:id="@+id/satellite"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
         <TextView
-            android:layout_centerInParent="true"
-            android:text="@string/satellite"
+            android:id="@+id/satellite_text"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_centerInParent="true"
+            android:text="@string/satellite" />
     </RelativeLayout>
 </LinearLayout>
