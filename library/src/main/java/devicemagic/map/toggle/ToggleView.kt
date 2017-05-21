@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.toggle_view.view.*
  */
 class ToggleView : FrameLayout {
 
-    var strokeColor = 0
+    var strokeColor : Int = 0
     var primaryColor = 0
 
     var textSize: Int = 0
