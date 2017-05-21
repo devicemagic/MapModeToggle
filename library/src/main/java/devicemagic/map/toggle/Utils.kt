@@ -1,10 +1,8 @@
 package devicemagic.map.toggle
 
-import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.support.annotation.ColorInt
-import android.util.TypedValue
 
 /**
  * Created by Joel on 5/20/2017.
@@ -31,12 +29,6 @@ class Utils {
             square.setColor(backgroundColor)
 
             return square
-        }
-
-        fun dipToPixels(context: Context?,dipValue:Int):Int
-        {
-            var metrics = context?.resources?.displayMetrics
-            return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue.toFloat(),metrics).toInt()
         }
     }
 }
