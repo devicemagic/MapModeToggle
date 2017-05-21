@@ -20,9 +20,10 @@ class ToggleView : FrameLayout {
 
     var strokeColor = 0
     var primaryColor = 0
-    var textSize= 0f
-    var borderWidth = 3
+    var textSize = 0f
+    var borderWidth = 1f
     var toggleModeListener: ToggleListener? = null
+    var toggleMode: Mode? = null
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -34,25 +35,25 @@ class ToggleView : FrameLayout {
 
         LayoutInflater.from(getContext()).inflate(R.layout.toggle_view, this, true)
 
-        val array = context?.obtainStyledAttributes(attrs, R.styleable.MapModeToggle, defStyleAttr, 0) ?: return
+        val array = context?.obtainStyledAttributes(attrs, R.styleable.ToggleView, defStyleAttr, 0) ?: return
 
-        textSize = array.getFloat(R.styleable.MapModeToggle_text_size, -1f)
+        textSize = array.getFloat(R.styleable.ToggleView_text_size, -1f)
 
         if (textSize == -1f) textSize = 10f
 
 
-        strokeColor = array.getColor(R.styleable.MapModeToggle_stroke_color, -1)
+        strokeColor = array.getColor(R.styleable.ToggleView_stroke_color, -1)
 
         if (strokeColor == -1) strokeColor = ContextCompat.getColor(context, R.color.toggle_stroke)
 
 
-        primaryColor = array.getColor(R.styleable.MapModeToggle_primary_color, -1)
+        primaryColor = array.getColor(R.styleable.ToggleView_primary_color, -1)
 
         if (primaryColor == -1) primaryColor = ContextCompat.getColor(context, R.color.toggle_stroke)
 
         array.recycle()
 
-        //setLayoutStrokeBorder(strokeColor, borderWidth)
+        setLayoutStrokeBorder(strokeColor, borderWidth)
         setupButtonListeners()
         setFontSize(textSize)
         setToggleViewState(Mode.Map)
@@ -64,9 +65,11 @@ class ToggleView : FrameLayout {
         map_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, sizeSp)
     }
 
-    fun setLayoutStrokeBorder(@ColorInt strokeColor: Int, borderWidth: Int) {
+    fun setLayoutStrokeBorder(@ColorInt strokeColor: Int, borderWidth: Float) {
 
-        main.background = generateSquareBorder(strokeColor, borderWidth)
+        var width = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, borderWidth, resources.displayMetrics))
+        main.setPadding(width, width, width, width)
+        main.background = generateSquareBorder(strokeColor, width)
     }
 
     fun setupButtonListeners() {
@@ -81,6 +84,7 @@ class ToggleView : FrameLayout {
     }
 
     fun setToggleViewState(mode: Mode) {
+        toggleMode = mode
 
         if (mode.equals(Mode.Satellite)) {
             satellite_text.setTextColor(Color.WHITE)
