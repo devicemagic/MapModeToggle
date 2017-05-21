@@ -29,7 +29,7 @@ class ToggleView : FrameLayout {
 
     var strokeSize = 0f
     var toggleModeListener: ToggleListener? = null
-    lateinit var toggleMode: Mode
+    private lateinit var toggleMode: Mode
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -79,7 +79,7 @@ class ToggleView : FrameLayout {
         main.background = generateSquareBorder(strokeColor, size)
     }
 
-    fun setupButtonListeners() {
+    private fun setupButtonListeners() {
         satellite.setOnClickListener {
             toggleModeListener?.onSatelliteModeSelected()
             setToggleViewState(Mode.Satellite)
