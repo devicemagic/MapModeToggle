@@ -19,6 +19,7 @@ class ToggleView : FrameLayout {
     var primaryColor = 0
     var textSize = 0
     var borderWidth = 3
+    var toggleModeListener:ToggleListener? = null
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -27,6 +28,7 @@ class ToggleView : FrameLayout {
     }
 
     fun init(context:Context?,attrs: AttributeSet?,defStyleAttr: Int) {
+
         LayoutInflater.from(getContext()).inflate(R.layout.toggle_view, this, true)
 
         val array = context?.obtainStyledAttributes(attrs, R.styleable.MapModeToggle, defStyleAttr, 0) ?: return
@@ -52,6 +54,11 @@ class ToggleView : FrameLayout {
         background = generateSquareBorder(strokeColor, borderWidth)
     }
 
+    fun setupButtonListeners()
+    {
+        satellite.setOnClickListener{ toggleModeListener?.onSatelliteModeSelected() }
+        map.setOnClickListener{ toggleModeListener?.onMapModeSelected() }
+    }
 
 
     fun setButtonBackground(mode:Mode) {
