@@ -13,6 +13,7 @@
         app:primary_color="@color/colorPrimary"
         app:stroke_color="@color/colorPrimary"
         android:layout_height="20dp"
+        app:text_size="10dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="8dp" />
 

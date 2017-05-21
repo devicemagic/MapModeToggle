@@ -3,12 +3,12 @@ package devicemagic.map.toggle
 import android.content.Context
 import android.graphics.Color
 import android.support.annotation.ColorInt
-import android.support.annotation.Dimension
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import devicemagic.map.toggle.Utils.Companion.dipToPixels
 import devicemagic.map.toggle.Utils.Companion.generateSquareBackground
 import devicemagic.map.toggle.Utils.Companion.generateSquareBorder
 import kotlinx.android.synthetic.main.toggle_view.view.*
@@ -20,7 +20,13 @@ class ToggleView : FrameLayout {
 
     var strokeColor = 0
     var primaryColor = 0
-    var textSize = 0f
+
+    var textSize: Int = 0
+        set(value) {
+            satellite_text.setTextSize(TypedValue.COMPLEX_UNIT_PX, value.toFloat())
+            map_text.setTextSize(TypedValue.COMPLEX_UNIT_PX, value.toFloat())
+        }
+
     var strokeSize = 0f
     var toggleModeListener: ToggleListener? = null
     lateinit var toggleMode: Mode
@@ -37,9 +43,9 @@ class ToggleView : FrameLayout {
 
         val array = context?.obtainStyledAttributes(attrs, R.styleable.ToggleView, defStyleAttr, 0) ?: return
 
-        textSize = array.getFloat(R.styleable.ToggleView_text_size, -1f)
+        textSize = array.getDimensionPixelSize(R.styleable.ToggleView_text_size, -1)
 
-        if (textSize == -1f) textSize = 10f
+        if (textSize == -1) textSize = dipToPixels(context,20)
 
 
         strokeSize = array.getFloat(R.styleable.ToggleView_stroke_size, -1f)
@@ -60,15 +66,11 @@ class ToggleView : FrameLayout {
 
         setLayoutStrokeBorder(strokeColor, strokeSize)
         setupButtonListeners()
-        setFontSize(textSize)
         setToggleViewState(Mode.Map)
 
     }
 
-    fun setFontSize(@Dimension sizeSp: Float) {
-        satellite_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, sizeSp)
-        map_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, sizeSp)
-    }
+
 
     fun setLayoutStrokeBorder(@ColorInt strokeColor: Int, strokeSize: Float) {
 
