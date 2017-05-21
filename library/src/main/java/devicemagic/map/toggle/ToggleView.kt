@@ -21,9 +21,9 @@ class ToggleView : FrameLayout {
     var strokeColor = 0
     var primaryColor = 0
     var textSize = 0f
-    var borderWidth = 1f
+    var strokeSize = 0f
     var toggleModeListener: ToggleListener? = null
-    var toggleMode: Mode? = null
+    lateinit var toggleMode: Mode
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -42,6 +42,11 @@ class ToggleView : FrameLayout {
         if (textSize == -1f) textSize = 10f
 
 
+        strokeSize = array.getFloat(R.styleable.ToggleView_stroke_size, -1f)
+
+        if (strokeSize == -1f) strokeSize = 1f
+
+
         strokeColor = array.getColor(R.styleable.ToggleView_stroke_color, -1)
 
         if (strokeColor == -1) strokeColor = ContextCompat.getColor(context, R.color.toggle_stroke)
@@ -53,7 +58,7 @@ class ToggleView : FrameLayout {
 
         array.recycle()
 
-        setLayoutStrokeBorder(strokeColor, borderWidth)
+        setLayoutStrokeBorder(strokeColor, strokeSize)
         setupButtonListeners()
         setFontSize(textSize)
         setToggleViewState(Mode.Map)
@@ -65,11 +70,11 @@ class ToggleView : FrameLayout {
         map_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, sizeSp)
     }
 
-    fun setLayoutStrokeBorder(@ColorInt strokeColor: Int, borderWidth: Float) {
+    fun setLayoutStrokeBorder(@ColorInt strokeColor: Int, strokeSize: Float) {
 
-        var width = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, borderWidth, resources.displayMetrics))
-        main.setPadding(width, width, width, width)
-        main.background = generateSquareBorder(strokeColor, width)
+        var size = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, strokeSize, resources.displayMetrics))
+        main.setPadding(size, size, size, size)
+        main.background = generateSquareBorder(strokeColor, size)
     }
 
     fun setupButtonListeners() {
