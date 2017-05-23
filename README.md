@@ -58,6 +58,9 @@ dependencies {
 
 # Basic Usage
 
+The easiest way to get started with this simple widget is to look inside the app directory that contains example usage in both Kotlin and Java activities.
+Below is an overview of how the example project is utilizing the library. 
+
 #### Map Mode Toggle XML
 
 To use this widget in your layout simply copy and paste the xml below. This provides the default functionality. 
