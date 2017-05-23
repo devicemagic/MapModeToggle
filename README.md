@@ -114,7 +114,7 @@ To set the inital state of the Toggle view you simply use the set mode functiona
 
 # Event Listener
 
-To listen to events from your toggle view, simply implement the listener that's triggered once the button is tapped.
+To listen to events from your toggle view, simply implement the listener that's triggered once the respective buttons are tapped.
 #### Java
 
 ```java
