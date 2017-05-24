@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.toggle_view.view.*
  */
 class ToggleView : FrameLayout {
 
-    var strokeColor : Int = 0
+    var strokeColor: Int = 0
     var primaryColor = 0
 
     var textSize: Int = 0
@@ -34,7 +34,8 @@ class ToggleView : FrameLayout {
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        init(context, attrs, defStyleAttr)
+        if (!isInEditMode)
+            init(context, attrs, defStyleAttr)
     }
 
     fun init(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) {
@@ -45,7 +46,7 @@ class ToggleView : FrameLayout {
 
         textSize = array.getDimensionPixelSize(R.styleable.ToggleView_text_size, -1)
 
-        if (textSize == -1) textSize = dipToPixels(context,20)
+        if (textSize == -1) textSize = dipToPixels(context, 20)
 
 
         strokeSize = array.getFloat(R.styleable.ToggleView_stroke_size, -1f)
@@ -69,7 +70,6 @@ class ToggleView : FrameLayout {
         setToggleViewState(Mode.Map)
 
     }
-
 
 
     fun setLayoutStrokeBorder(@ColorInt strokeColor: Int, strokeSize: Float) {
