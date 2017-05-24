@@ -49,7 +49,7 @@ Add this to your module's `build.gradle` file:
 ```gradle
 dependencies {
 	...
-	compile 'com.github.devicemagic:MapModeToggle:1.0'
+	compile 'com.github.devicemagic:MapModeToggle:1.1'
 	}
 }
 ```
