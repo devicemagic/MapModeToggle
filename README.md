@@ -1,6 +1,6 @@
 # Map Mode Toggle in Kotlin 
 
-[ ![JitPack](https://img.shields.io/github/release/device-magic/mapmodetoggle.svg?label=jitpack) ](https://jitpack.io/#device-magic/mapmodetoggle)
+[ ![JitPack](https://img.shields.io/github/release/devicemagic/MapModeToggle.svg?label=jitpack) ](https://jitpack.io/#devicemagic/MapModeToggle)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 
@@ -49,7 +49,7 @@ Add this to your module's `build.gradle` file:
 ```gradle
 dependencies {
 	...
-	compile 'com.github.devicemagic:MapModeToggle:1.0'
+	compile 'com.github.devicemagic:MapModeToggle:1.1'
 	}
 }
 ```
