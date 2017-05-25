@@ -7,6 +7,8 @@
 Map Mode Toggle is a library that allows you to create a widget that allows you to toggle between satellite and map mode when using  [Google Maps](https://developers.google.com/maps/documentation/android-api/).
 It is written entirely in Kotlin, nonetheless it can still be used in Java based Android projects :)
 
+<img src="https://github.com/devicemagic/MapModeToggle/raw/master/resources/screenshot.png" height="960" width="540">
+
 ---
 
 # Table of Contents
